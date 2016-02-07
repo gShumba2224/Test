@@ -1,0 +1,19 @@
+import numpy
+
+
+def getData (fileName):
+    file = open(fileName)
+    fileLines = file.readlines()
+    numRows = len (fileLines)
+    dataMatrix = numpy.zeros((numRows,3))
+    featureVector = []
+    rowIndex = 0
+    for line in fileLines:
+      #  print line
+        f1,f2,f3,label = line.strip().split("\t")
+        dataMatrix[rowIndex] = float(f1)
+        dataMatrix[rowIndex][1] = float(f2)
+        dataMatrix[rowIndex][2] = float(f3)
+        featureVector.append(label)
+        rowIndex = rowIndex+1
+    return dataMatrix,featureVector
